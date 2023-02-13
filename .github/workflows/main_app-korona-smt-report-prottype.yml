@@ -51,11 +51,14 @@ jobs:
       - name: build
         run: npm run build --if-present
 
+      - name: archive
+        run: zip -ry /tmp/app.zip ./
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: .
+          path: /tmp/app.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -77,4 +80,4 @@ jobs:
           app-name: 'app-korona-smt-report-prottype'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C584931715974C2B95A7815E851D0B66 }}
-          package: .
+          package: app.zip
