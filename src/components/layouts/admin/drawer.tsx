@@ -14,7 +14,7 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import StorageIcon from '@mui/icons-material/Storage';
-import Link from '@/components/link';
+import Link from '../../link';
 
 type Props = {
   width: number;
