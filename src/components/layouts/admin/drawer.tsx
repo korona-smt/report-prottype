@@ -9,17 +9,19 @@ import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import Toolbar from '@mui/material/Toolbar';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import StorageIcon from '@mui/icons-material/Storage';
+import Link from '@/components/link';
 
 type Props = {
   width: number;
+  current: string;
 }
 
-export default function Drawer({ width }: Props) {
+export default function Drawer({ width, current }: Props) {
   const MyDrawer = styled(MuiDrawer)(
     ({ theme }) => ({
       '& .MuiDrawer-paper': {
@@ -48,7 +50,7 @@ export default function Drawer({ width }: Props) {
       </Toolbar>
       <Divider />
       <List component="nav">
-        {mainListItems}
+        <MainListItems current={current} />
         <Divider sx={{ my: 1 }} />
         {secondaryListItems}
       </List>
@@ -56,20 +58,28 @@ export default function Drawer({ width }: Props) {
   );
 }
 
-const mainListItems = (
+type MainListItemsProps = {
+  current: string;
+}
+
+const MainListItems = ({ current }: MainListItemsProps) => (
   <Fragment>
-    <ListItemButton>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Orders" />
-    </ListItemButton>
+    <Link href="/" style={{textDecoration: 'none', color: 'inherit'}}>
+      <ListItemButton selected={current == 'dashboard'}>
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
+        <ListItemText primary="Dashboard" />
+      </ListItemButton>
+    </Link>
+    <Link href="/database" style={{textDecoration: 'none', color: 'inherit'}}>
+      <ListItemButton selected={current == 'database'}>
+        <ListItemIcon>
+          <StorageIcon />
+        </ListItemIcon>
+        <ListItemText primary="Database" />
+      </ListItemButton>
+    </Link>
     <ListItemButton>
       <ListItemIcon>
         <PeopleIcon />

@@ -16,7 +16,7 @@ export async function getServerSideProps(): Promise<GetServerSidePropsResult<Pro
 
 export default function Home({ ip }: Props) {
   return (
-    <Layout title={"Dashboard"}>
+    <Layout title="Dashboard" current="dashboard">
       <Alert severity="success"><strong>{ip}</strong>からの接続に成功しました！</Alert>
     </Layout>
   );

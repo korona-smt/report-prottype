@@ -25,9 +25,10 @@ const AppBar = styled(MuiAppBar)<AppBarProps>(({ theme }) => ({
 type Props = {
   children: ReactNode;
   title: string;
+  current: string;
 }
 
-export default function Layout({ children, title }: Props) {
+export default function Layout({ children, title, current }: Props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -44,7 +45,7 @@ export default function Layout({ children, title }: Props) {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer width={drawerWidth} />
+      <Drawer width={drawerWidth} current={current} />
       <Box
         component="main"
         sx={{
