@@ -68,7 +68,7 @@ export default function Database({ host, database, tables }: Props) {
             <CardContent>
               <List>
                 {tables.map((table) => (
-                  <ListItem>
+                  <ListItem key={table}>
                     <ListItemText primary={table} />
                   </ListItem>
                 ))}
