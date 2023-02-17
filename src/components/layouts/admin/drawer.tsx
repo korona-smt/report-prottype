@@ -64,7 +64,7 @@ type MainListItemsProps = {
 
 const MainListItems = ({ current }: MainListItemsProps) => (
   <Fragment>
-    <Link href="/" style={{textDecoration: 'none', color: 'inherit'}}>
+    <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
       <ListItemButton selected={current == 'dashboard'}>
         <ListItemIcon>
           <DashboardIcon />
@@ -72,7 +72,7 @@ const MainListItems = ({ current }: MainListItemsProps) => (
         <ListItemText primary="Dashboard" />
       </ListItemButton>
     </Link>
-    <Link href="/database" style={{textDecoration: 'none', color: 'inherit'}}>
+    <Link href="/database" style={{ textDecoration: 'none', color: 'inherit' }}>
       <ListItemButton selected={current == 'database'}>
         <ListItemIcon>
           <StorageIcon />
@@ -80,24 +80,14 @@ const MainListItems = ({ current }: MainListItemsProps) => (
         <ListItemText primary="Database" />
       </ListItemButton>
     </Link>
-    <ListItemButton>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Customers" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Integrations" />
-    </ListItemButton>
+    <Link href="/reports" style={{ textDecoration: 'none', color: 'inherit' }}>
+      <ListItemButton selected={current == 'reports'}>
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Reports" />
+      </ListItemButton>
+    </Link>
   </Fragment>
 );
 
