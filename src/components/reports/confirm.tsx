@@ -49,7 +49,7 @@ export default function Confirm() {
           </Typography>
           <List dense>
             {titles.map((title) => (
-              <ListItem>
+              <ListItem key={title}>
                 <ListItemText primary={title}></ListItemText>
               </ListItem>
             ))}
@@ -61,7 +61,7 @@ export default function Confirm() {
           </Typography>
           <List dense>
             {shops.map((shop) => (
-              <ListItem>
+              <ListItem key={shop}>
                 <ListItemText primary={shop}></ListItemText>
               </ListItem>
             ))}
