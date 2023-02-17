@@ -10,6 +10,7 @@ import DateRangeForm from '../components/reports/dateRangeForm';
 import MovieTitleForm from '../components/reports/movieTitleForm';
 import ShopForm from '../components/reports/shopForm';
 import Confirm from '../components/reports/confirm';
+import Link from '../components/link';
 
 const steps = ['期間選択', '作品選択', '店舗選択', '確認'];
 
@@ -63,6 +64,9 @@ export default function Report() {
             <Button
               variant="contained"
               sx={{ mt: 3, ml: 1 }}
+              component={Link}
+              href="/download"
+              target="_blank"
             >
               ダウンロード
             </Button>
