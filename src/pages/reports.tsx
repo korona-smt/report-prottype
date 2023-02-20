@@ -10,7 +10,7 @@ import DateRangeForm from '../components/reports/dateRangeForm';
 import MovieTitleForm from '../components/reports/movieTitleForm';
 import ShopForm from '../components/reports/shopForm';
 import Confirm from '../components/reports/confirm';
-import Link from '../components/link';
+import type { Data } from './api/reports';
 
 const steps = ['期間選択', '作品選択', '店舗選択', '確認'];
 
@@ -40,6 +40,12 @@ export default function Report() {
     setActiveStep(activeStep - 1);
   };
 
+  const handleDownload = async () => {
+    const data: Data = await fetch("/api/reports")
+      .then(data => data.json());
+    window.open(`/download?filename=` + data.filename);
+  }
+
   return (
     <Layout title="Reports" current="reports">
       <Paper variant="outlined" sx={{ my: 6, p: 3 }}>
@@ -63,10 +69,8 @@ export default function Report() {
           {activeStep === steps.length - 1 ? (
             <Button
               variant="contained"
+              onClick={handleDownload}
               sx={{ mt: 3, ml: 1 }}
-              component={Link}
-              href="/download"
-              target="_blank"
             >
               ダウンロード
             </Button>
