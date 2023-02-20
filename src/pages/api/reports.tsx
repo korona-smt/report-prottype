@@ -20,7 +20,7 @@ export default async function handler(
   // tmpDirをダウンロード処理と共有する
   const tmpDir = path.join(os.tmpdir(), "app", "report");
   if (!fs.existsSync(tmpDir)) {
-    fs.mkdirSync(tmpDir);
+    fs.mkdirSync(tmpDir, { recursive: true });
   }
 
   const template = "./docs/report.xlsx";
