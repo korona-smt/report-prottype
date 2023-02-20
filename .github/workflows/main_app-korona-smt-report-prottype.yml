@@ -60,6 +60,7 @@ jobs:
           cp -r ./.next/standalone /tmp/app
           cp -r ./public /tmp/app/public
           cp -r ./.next/static /tmp/app/.next/static
+          cp -r ./docs /tmp/app/docs
           cd /tmp/app
           zip -r /tmp/app.zip ./
 
