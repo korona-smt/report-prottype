@@ -31,6 +31,7 @@ function getStepContent(step: number) {
 
 export default function Report() {
   const [activeStep, setActiveStep] = useState(0);
+  const [donwloading, setDonwloading] = useState(false);
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -41,8 +42,10 @@ export default function Report() {
   };
 
   const handleDownload = async () => {
+    setDonwloading(true);
     const data: Data = await fetch("/api/reports")
       .then(data => data.json());
+    setDonwloading(false);
     window.open(`/download?filename=` + data.filename);
   }
 
@@ -68,11 +71,12 @@ export default function Report() {
           )}
           {activeStep === steps.length - 1 ? (
             <Button
+              disabled={donwloading}
               variant="contained"
               onClick={handleDownload}
               sx={{ mt: 3, ml: 1 }}
             >
-              ダウンロード
+              {donwloading ? "ダウンロード中" : "ダウンロード"}
             </Button>
           ) : (
             <Button
