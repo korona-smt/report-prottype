@@ -14,6 +14,7 @@ import Layout from '../components/layouts/admin/layout';
 type Props = {
   host: string;
   database: string | undefined;
+  user: string | undefined;
   tables: string[];
 }
 
@@ -38,12 +39,13 @@ export async function getServerSideProps(): Promise<GetServerSidePropsResult<Pro
     props: {
       host: config.server,
       database: config.database,
+      user: config.user,
       tables,
     }
   };
 }
 
-export default function Database({ host, database, tables }: Props) {
+export default function Database({ host, database, user, tables }: Props) {
   return (
     <Layout title="Database" current="database">
       <Grid container spacing={2}>
@@ -57,6 +59,9 @@ export default function Database({ host, database, tables }: Props) {
                 </ListItem>
                 <ListItem>
                   <ListItemText primary="Database" secondary={database} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary="User" secondary={user} />
                 </ListItem>
               </List>
             </CardContent>
