@@ -26,10 +26,10 @@ const steps: Map<number, Step> = new Map([
 
 function getStepContent(no: number): ReactNode {
   const step = steps.get(no);
-  if (step === undefined) {
-    throw new Error('Unknown step');
+  if (!!step) {
+    return step.content;
   }
-  return step.content;
+  throw new Error('Unknown step');
 }
 
 export default function Report() {
