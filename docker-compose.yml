@@ -13,6 +13,7 @@ services:
     tty: true
     environment:
       - NODE_ENV=development
+      - TZ=Asia/Tokyo
 
 volumes:
   next:
